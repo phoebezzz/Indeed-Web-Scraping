@@ -1,1 +1,4 @@
-
+# ignore following files
+*.bin
+*.gensim*
+*.pkl
