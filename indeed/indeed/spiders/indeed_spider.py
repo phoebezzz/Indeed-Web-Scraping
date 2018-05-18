@@ -5,22 +5,15 @@ import re
 class IndeedSpider(Spider):
 	name = 'indeed_spider'
 	allowed_urls = ['https://www.indeed.com/']
-	#cities = [['New+York','NY'],['San+Francisco','CA'],['Seattle','WA'],['Chicago','IL'],['Boston','MA'],['Washington','DC'],('Atlanta','GA'),('Austin','TX'),('San+Diego','CA'),('Houston','TX'),('Los+Angeles','CA'),('San+Jose','CA'),('Cambridge','MA'),('Sunnyvale','CA')]
-	# cities = [['New+York','NY']]
 	start_urls = ['https://www.indeed.com/']
-	#start_urls = ['https://www.indeed.com/jobs?q=Data+Science&l={}%2C+{}'.format(city[0],city[1]) for city in cities]
 
 
 	def parse(self,response):
 		#print(start_urls)
 	
-		# find total number of jobs and for 15 jobs per page, calculate total page number to scrape
-		#text = response.xpath('//*[@id="searchCount"]/text()').extract_first().replace(',','') # '\n        Page 1 of 125775 jobs'
-		#total_pages = list(map(lambda x: int(x), re.findall('\d+', text)))[1]//15 + 1
-
 		# defind pattern for all pages need to go through
-		cities = [('Los+Angeles','CA'),('San+Jose','CA'),('Cambridge','MA')]
-		#('New+York','NY'),('Sunnyvale','CA'),('Seattle','WA'),('San+Francisco','CA'),('Chicago','IL'),('Boston','MA'),('Washington','DC'),('Atlanta','GA'),('Austin','TX'),('San+Diego','CA'),('Houston','TX')
+		cities = [('Los+Angeles','CA'),('San+Jose','CA'),('Cambridge','MA'),('New+York','NY'),('Sunnyvale','CA'),('Seattle','WA'),('San+Francisco','CA'),('Chicago','IL'),('Boston','MA'),('Washington','DC'),('Atlanta','GA'),('Austin','TX'),('San+Diego','CA'),('Houston','TX')]
+		
 		search_urls=[]
 		for city in cities:
 			search_urls.append('https://www.indeed.com/jobs?q=Data+Science&l=' + city[0]+ '%2C+' + city[1])
